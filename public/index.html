@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <canvas id="screen" tabindex='1'></canvas>
+    <script>
+        // SERVER CONNECTION
+        let ws;
+        let retry = 0;
+        connect();
+
+        function connect() {
+            //ws = new WebSocket("wss://ria-game-server.glitch.me/")
+            let wsUrl = location.href.startsWith("https") ? location.href.replace("https", "wss") : location.href.startsWith("http") ? location.href.replace("http", "ws") : location.href
+            //let port = 3000;
+            //wsUrl = wsUrl.endsWith("/") ? (wsUrl.substring(wsUrl.length - 1, 0) + ":" + port) : (wsUrl + ":" + port);
+            //ws = new WebSocket("ws://localhost:8080");
+
+            console.log(wsUrl)
+            ws = new WebSocket(wsUrl)
+
+            ws.onclose = async (e) => {
+                if (!retry)
+                    console.log("Disconnected from server!")
+                setTimeout(function () {
+                    console.log("Retrying to connect" + `(${retry})`)
+                    retry++;
+                    connect();
+                }, 1000);
+            }
+            ws.addEventListener("open", async (e) => {
+                console.log("Connected to server!")
+                retry = 0;
+            })
+
+            ws.addEventListener("message", (e) => {
+                const msg = e.data;
+                console.log('received:', msg)
+                document.title = msg
+            });
+        }
+    </script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

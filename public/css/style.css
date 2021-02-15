@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    background: #212121; 
+    color: #fff; 
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#screen {
+    width: 1900px;
+    height: 900px;
+}
+
+#screenX {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0; 
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+}
