@@ -1,0 +1,28 @@
+{
+    "name": "puppeteer-example",
+    "private": "true",
+    "version": "1.0.0",
+    "description": "A working example of Puppeteer on Glitch.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "express": "^4.16.4",
+        "puppeteer": "^1.14.0",
+        "ws": "^7.3.1"
+    },
+    "engines": {
+        "node": "12.x"
+    },
+    "repository": {
+        "url": "https://glitch.com/edit/#!/puppeteer-example"
+    },
+    "license": "MIT",
+    "keywords": [
+        "node",
+        "glitch",
+        "express",
+        "puppeteer"
+    ]
+}
