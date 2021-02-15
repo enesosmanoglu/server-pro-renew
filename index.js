@@ -70,7 +70,7 @@ console.log("Server started!");
 (async () => {
     browser = await puppeteer.launch({
         //headless: false,
-        args: ['--no-sandbox', '--window-size=1900,700'],
+        args: ['--no-sandbox', '--window-size=1900,700', '--disable-setuid-sandbox'],
         slowMo: 0
     });
     page = await browser.newPage();
